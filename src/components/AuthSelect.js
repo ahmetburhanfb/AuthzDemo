@@ -39,7 +39,7 @@ const AuthSelect = (props) => {
     const newOptions = Object.keys(props.data.permissions);
     // setValue([...checked]);
     setOptions([...newOptions]);
-  }, [props.data.permissions]);
+  }, [JSON.stringify(permissions)]);
 
   // useState(() => {
 
