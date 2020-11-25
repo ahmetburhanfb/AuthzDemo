@@ -4,15 +4,16 @@ const data = [
     permissions: {
       read: true,
       write: false,
+      overwrite: false,
       block: false
     }
   },
   {
     name: "Analytics",
     permissions: {
-      read: false,
+      read: true,
       write: false,
-      block: false
+      block: true
     }
   },
   {
@@ -20,7 +21,7 @@ const data = [
     permissions: {
       read: false,
       write: false,
-      block: false
+      block: true
     }
   },
   {
@@ -43,7 +44,7 @@ const data = [
         name: "SubResource 2",
         permissions: {
           read: false,
-          write: false,
+          write: true,
           block: false
         }
       },
@@ -51,7 +52,7 @@ const data = [
         name: "SubResource 3",
         permissions: {
           read: true,
-          write: false,
+          write: true,
           block: false
         }
       },
@@ -118,8 +119,8 @@ const data = [
   {
     name: "United Communications",
     permissions: {
-      read: false,
-      write: false,
+      read: true,
+      write: true,
       block: false
     },
     children: [

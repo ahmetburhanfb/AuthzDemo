@@ -4,15 +4,35 @@ import { Box, CheckBoxGroup, Grommet } from "grommet";
 import { grommet } from "grommet/themes";
 
 const AuthSelect = (props) => {
-  const [value, setValue] = useState([]);
   const {
     data: { name, permissions }
   } = props;
+  const [options, setOptions] = useState([]);
+  const checked = Object.entries(permissions).reduce((prev, curr) => {
+    return prev.concat(curr[1] === true ? curr[0] : null);
+  }, []);
+  console.log("checked", checked);
+  const [value, setValue] = useState([...checked]);
+
   console.log(permissions, "permissions");
-  let options = Object.entries(permissions).map((permission) => {
-    return { label: permission[0], value: permission[1] };
-  });
-  console.log(options, "options");
+
+  // console.log(options, "options");
+  useState(() => {
+    const newOptions = Object.entries(permissions).map((permission) => {
+      return { label: permission[0], value: permission[1] };
+    });
+    console.log(">>>>options", newOptions);
+    const checked = Object.entries(permissions).reduce((prev, curr) => {
+      return prev.concat(curr[1] === true ? curr[0] : null);
+    }, []);
+    console.log(">>>>checked 28", checked);
+    setValue([...checked]);
+    setOptions([...newOptions]);
+  }, [permissions]);
+
+  // useState(() => {
+
+  // }, [name]);
 
   return (
     <Grommet theme={grommet}>
@@ -29,8 +49,8 @@ const AuthSelect = (props) => {
         /> */}
         <CheckBoxGroup
           gap="medium"
-          labelKey="label"
-          valueKey="value"
+          // labelKey="label"
+          // valueKey="value"
           value={value}
           onChange={(event) => {
             setValue(event.value);
