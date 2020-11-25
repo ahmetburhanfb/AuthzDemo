@@ -8,26 +8,26 @@ const AuthSelect = (props) => {
     data: { name, permissions }
   } = props;
   const [options, setOptions] = useState([]);
-  const checked = Object.entries(permissions).reduce((prev, curr) => {
-    return prev.concat(curr[1] === true ? curr[0] : null);
-  }, []);
-  console.log("checked", checked);
-  const [value, setValue] = useState([...checked]);
+  // const checked = Object.entries(permissions).reduce((prev, curr) => {
+  //   return prev.concat(curr[1] === true ? curr[0] : null);
+  // }, []);
+  // console.log("checked", checked);
+  const [value, setValue] = useState([]);
 
   console.log(permissions, "permissions");
 
   // console.log(options, "options");
   useState(() => {
-    const newOptions = Object.entries(permissions).map((permission) => {
-      return { label: permission[0], value: permission[1] };
-    });
-    console.log(">>>>options", newOptions);
+    // const newOptions = Object.entries(permissions).map((permission) => {
+    //   return { label: permission[0], value: permission[1] };
+    // });
+    // console.log(">>>>options", newOptions);
     const checked = Object.entries(permissions).reduce((prev, curr) => {
       return prev.concat(curr[1] === true ? curr[0] : null);
     }, []);
     console.log(">>>>checked 28", checked);
     setValue([...checked]);
-    setOptions([...newOptions]);
+    setOptions([...Object.keys(permissions)]);
   }, [permissions]);
 
   // useState(() => {
